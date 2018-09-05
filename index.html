@@ -48,14 +48,11 @@
       }
 
       function changeBackground(event) {
-        if (formatSelect.value == 'rgb') {
-          document.body.style.backgroundColor = 'rgb(' + event.target.value + ')';
-        } else if (formatSelect.value == 'rgba') {
-          document.body.style.backgroundColor = 'rgba(' + event.target.value + ')';
-        } else {
+        if (formatSelect.value == 'hex') {
           document.body.style.backgroundColor = event.target.value;
+        } else {
+          document.body.style.backgroundColor = formatSelect.value + '(' + event.target.value + ')';
         }
-
       }
     </script>
   </body>
