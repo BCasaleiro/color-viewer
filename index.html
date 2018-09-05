@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>RGB viewer</title>
+  </head>
+  <body>
+    <input id="color" type="text" name="color" placeholder="255,255,255">
+    <select id="format" name="format">
+      <option value="rgb">RGB</option>
+      <option value="rgba">RGBA</option>
+      <option value="hex">Hex</option>
+    </select>
+
+    <script type="text/javascript">
+      const colorInput = document.getElementById('color');
+      const formatSelect = document.getElementById('format');
+
+      document.addEventListener('DOMContentLoaded',function() {
+        document.querySelector('input[name="color"]').onchange=changeBackground;
+      },false);
+
+      document.addEventListener('DOMContentLoaded',function() {
+        document.querySelector('select[name="format"]').onchange=changeFormat;
+      },false);
+
+      function changeFormat(event) {
+        if (event.target.value == 'rgb') {
+          colorInput.placeholder = "255,255,255";
+        } else if (event.target.value == 'rgba') {
+          colorInput.placeholder = "255,255,255,1";
+        } else {
+          colorInput.placeholder = "#000000";
+        }
+      }
+
+      function changeBackground(event) {
+        document.body.style.backgroundColor = 'rgb(' + event.target.value + ')';
+      }
+    </script>
+  </body>
+</html>
