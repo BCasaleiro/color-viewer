@@ -2,15 +2,29 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+
     <title>RGB viewer</title>
+
+    <style media="screen">
+      body {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+      }
+
+      main {
+      }
+    </style>
   </head>
   <body>
-    <input id="color" type="text" name="color" placeholder="255,255,255">
-    <select id="format" name="format">
-      <option value="rgb">RGB</option>
-      <option value="rgba">RGBA</option>
-      <option value="hex">Hex</option>
-    </select>
+    <main>
+      <input id="color" type="text" name="color" placeholder="255,255,255">
+      <select id="format" name="format">
+        <option value="rgb">RGB</option>
+        <option value="rgba">RGBA</option>
+        <option value="hex">Hex</option>
+      </select>
+    </main>
 
     <script type="text/javascript">
       const colorInput = document.getElementById('color');
@@ -19,7 +33,6 @@
       document.addEventListener('DOMContentLoaded',function() {
         document.querySelector('input[name="color"]').onchange=changeBackground;
       },false);
-
       document.addEventListener('DOMContentLoaded',function() {
         document.querySelector('select[name="format"]').onchange=changeFormat;
       },false);
@@ -30,12 +43,19 @@
         } else if (event.target.value == 'rgba') {
           colorInput.placeholder = "255,255,255,1";
         } else {
-          colorInput.placeholder = "#000000";
+          colorInput.placeholder = "#FFFFFF";
         }
       }
 
       function changeBackground(event) {
-        document.body.style.backgroundColor = 'rgb(' + event.target.value + ')';
+        if (formatSelect.value == 'rgb') {
+          document.body.style.backgroundColor = 'rgb(' + event.target.value + ')';
+        } else if (formatSelect.value == 'rgba') {
+          document.body.style.backgroundColor = 'rgba(' + event.target.value + ')';
+        } else {
+          document.body.style.backgroundColor = event.target.value;
+        }
+
       }
     </script>
   </body>
