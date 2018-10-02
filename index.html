@@ -7,49 +7,55 @@
 
     <style media="screen">
       body {
+        position: absolute;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         margin: 0;
-        background-color: rgb(22,160,133);
+        background-color: #16a085;
       }
 
       main {
-        width: 250px;
-        height: 30px;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        text-align: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 100%;
       }
 
       #color {
-        height: 100%;
-        width: 100%;
-        background-color: rgba(0,0,0,0);
+        width: 80%;
+        max-width: 300px;
+        height: 50px;
+        margin: 0 auto;
         border: 0px;
-        border-bottom: 3px solid #1c1c1c;
+        border-radius: 0px;
+        background-color: rgba(0,0,0,0);
+        font-family: monospace;
+        font-size: 1.5em;
         text-align: center;
         color: #1c1c1c;
       }
+      #color::placeholder { color: #1c1c1c; }
+      #color:focus { outline: none; }
     </style>
   </head>
-  <body>
+  <body onclick="focusInput();">
     <main>
-      <input id="color" type="text" name="color" placeholder="rgb(22,160,133)">
+      <input id="color" type="text" name="color" placeholder="#16a085">
     </main>
 
     <script type="text/javascript">
-      const colorInput = document.getElementById('color');
-
       document.addEventListener('DOMContentLoaded',function() {
         document.querySelector('input[name="color"]').onchange=changeBackground;
       },false);
 
       function changeBackground(event) {
         document.body.style.backgroundColor = event.target.value;
+      }
+
+      function focusInput() {
+        let inputColor = document.getElementById('color');
+        inputColor.focus();
       }
     </script>
   </body>
