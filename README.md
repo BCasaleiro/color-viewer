@@ -2,4 +2,4 @@
 
 HTML page to preview colors.
 
-Check it out [https://bcasaleiro.github.io/color-viewer/](here).
+Check it out [here](https://bcasaleiro.github.io/color-viewer/).
